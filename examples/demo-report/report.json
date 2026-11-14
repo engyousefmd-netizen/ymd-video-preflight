@@ -1,0 +1,262 @@
+{
+  "schema_version": "1.0",
+  "tool": {
+    "name": "YMD Video Preflight",
+    "version": "0.1.0"
+  },
+  "generated_at": "2026-11-14T08:38:26.968832+00:00",
+  "profile": {
+    "name": "vertical-social",
+    "expected_aspect_ratio": 0.5625,
+    "aspect_tolerance": 0.025,
+    "min_short_edge": 720,
+    "min_fps": 23.0,
+    "max_fps": 61.0,
+    "target_lufs": -16.0,
+    "loudness_tolerance_lu": 2.0,
+    "max_true_peak_dbfs": -1.0,
+    "black_min_seconds": 0.5,
+    "black_pixel_threshold": 0.1,
+    "black_picture_ratio": 0.98,
+    "silence_min_seconds": 0.8,
+    "silence_noise_db": -45.0,
+    "freeze_min_seconds": 1.0,
+    "freeze_noise_ratio": 0.001,
+    "max_subtitle_chars_per_line": 42,
+    "max_subtitle_lines": 2,
+    "max_subtitle_cps": 20.0
+  },
+  "source": {
+    "name": "synthetic-review.mp4",
+    "size_bytes": 954996,
+    "duration_seconds": 8.0,
+    "sha256": "7e6717f25af972797d01a4862b528e737ee0590c1e8bc164ca4686a3243427f3"
+  },
+  "video": {
+    "codec": "h264",
+    "width": 360,
+    "height": 640,
+    "display_width": 360.0,
+    "display_height": 640.0,
+    "fps": 25.0,
+    "pixel_format": "yuv420p",
+    "rotation_degrees": 0.0,
+    "sample_aspect_ratio": 1.0,
+    "stream_index": 0,
+    "duration_seconds": 8.0
+  },
+  "audio": {
+    "codec": "aac",
+    "sample_rate": 48000.0,
+    "channels": 1,
+    "integrated_lufs": -25.69,
+    "true_peak_dbfs": -19.54,
+    "loudness_range_lu": 2.2,
+    "stream_index": 1,
+    "duration_seconds": 8.0,
+    "integrated_lufs_raw": "-25.69"
+  },
+  "checks": [
+    {
+      "id": "video_present",
+      "status": "pass",
+      "title": "Video stream",
+      "message": "Video stream found.",
+      "value": null
+    },
+    {
+      "id": "audio_present",
+      "status": "pass",
+      "title": "Audio stream",
+      "message": "Audio stream found.",
+      "value": null
+    },
+    {
+      "id": "duration",
+      "status": "pass",
+      "title": "Duration",
+      "message": "Duration is readable.",
+      "value": 8.0
+    },
+    {
+      "id": "aspect_ratio",
+      "status": "pass",
+      "title": "Display aspect ratio",
+      "message": "Display ratio 0.5625; house target 0.5625. Rotation and sample aspect ratio are included.",
+      "value": 0.5625
+    },
+    {
+      "id": "resolution",
+      "status": "warn",
+      "title": "Resolution",
+      "message": "Encoded short edge 360px; house minimum 720px.",
+      "value": 360
+    },
+    {
+      "id": "frame_rate",
+      "status": "pass",
+      "title": "Average frame rate",
+      "message": "Average frame rate 25.0; expected 23–61 fps. This is not a constant-frame-rate test.",
+      "value": 25.0
+    },
+    {
+      "id": "video_codec",
+      "status": "pass",
+      "title": "Video codec",
+      "message": "Codec: h264. H.264 is this tool's general handoff preference; other codecs may be appropriate.",
+      "value": "h264"
+    },
+    {
+      "id": "av_duration",
+      "status": "pass",
+      "title": "Audio/video duration difference",
+      "message": "Stream duration difference 0.000s. This does not measure lip-sync.",
+      "value": 0.0
+    },
+    {
+      "id": "scan_complete",
+      "status": "pass",
+      "title": "Full scan",
+      "message": "FFmpeg finished reading the selected streams.",
+      "value": null
+    },
+    {
+      "id": "decode_integrity",
+      "status": "pass",
+      "title": "Decode integrity",
+      "message": "No recognized decode-error messages were found; this is not a proof of flawless media.",
+      "value": null
+    },
+    {
+      "id": "black_events",
+      "status": "warn",
+      "title": "Black segments",
+      "message": "1 interval(s) above the configured threshold. Review intentional pauses, fades and stills.",
+      "value": 1
+    },
+    {
+      "id": "silence_events",
+      "status": "warn",
+      "title": "Silence segments",
+      "message": "1 interval(s) above the configured threshold. Review intentional pauses, fades and stills.",
+      "value": 1
+    },
+    {
+      "id": "freeze_events",
+      "status": "warn",
+      "title": "Static/frozen segments",
+      "message": "2 interval(s) above the configured threshold. Review intentional pauses, fades and stills.",
+      "value": 2
+    },
+    {
+      "id": "loudness",
+      "status": "warn",
+      "title": "Integrated loudness",
+      "message": "Measured -25.69 LUFS; house target -16 ± 2 LU.",
+      "value": -25.69
+    },
+    {
+      "id": "true_peak",
+      "status": "pass",
+      "title": "True peak",
+      "message": "Measured -19.54 dBTP; house ceiling -1 dBTP.",
+      "value": -19.54
+    },
+    {
+      "id": "subtitles",
+      "status": "warn",
+      "title": "SRT captions",
+      "message": "3 cues; 5 issue(s).",
+      "value": 5
+    }
+  ],
+  "events": {
+    "black": [
+      {
+        "start": 2.0,
+        "end": 3.2,
+        "duration": 1.2
+      }
+    ],
+    "silence": [
+      {
+        "start": 2.0053,
+        "end": 3.2213,
+        "duration": 1.216
+      }
+    ],
+    "freeze": [
+      {
+        "start": 2.0,
+        "end": 3.2,
+        "duration": 1.2
+      },
+      {
+        "start": 3.2,
+        "end": 5.2,
+        "duration": 2.0
+      }
+    ]
+  },
+  "subtitles": {
+    "file": "captions.srt",
+    "cue_count": 3,
+    "issues": [
+      {
+        "code": "srt_line_too_long",
+        "severity": "warn",
+        "cue": 2,
+        "message": "Text line 1 has approximately 53 characters; the configured limit is 42."
+      },
+      {
+        "code": "srt_high_cps",
+        "severity": "warn",
+        "cue": 2,
+        "message": "Reading speed is approximately 40.8 characters/second; the configured limit is 20."
+      },
+      {
+        "code": "srt_beyond_video",
+        "severity": "warn",
+        "cue": 3,
+        "message": "Cue ends at 9.000s, beyond the video duration of 8.000s."
+      },
+      {
+        "code": "srt_high_cps",
+        "severity": "warn",
+        "cue": 3,
+        "message": "Reading speed is approximately 20.7 characters/second; the configured limit is 20."
+      },
+      {
+        "code": "srt_overlap",
+        "severity": "warn",
+        "cue": 2,
+        "message": "Cue overlaps cue 1."
+      }
+    ]
+  },
+  "analysis": {
+    "full_scan": true,
+    "heuristic": true,
+    "engine_versions": {
+      "ffprobe": "ffprobe version 7.1.5-0+deb13u1 Copyright (c) 2007-2026 the FFmpeg developers",
+      "ffmpeg": "ffmpeg version 7.1.5-0+deb13u1 Copyright (c) 2000-2026 the FFmpeg developers"
+    },
+    "warnings": [],
+    "limitations": [
+      "House profiles are editable preferences, not official platform requirements.",
+      "Black, silence and freeze detections are review cues; intentional stills, fades and pauses can trigger them.",
+      "Only the selected primary video/audio streams are scanned. Captions are checked from an optional external SRT.",
+      "No aesthetic, factual, legal, lip-sync, speech-recognition or caption-meaning verification is performed.",
+      "A pass means configured checks completed without a flag; a person must review the delivery."
+    ]
+  },
+  "summary": {
+    "status": "warn",
+    "counts": {
+      "pass": 10,
+      "warn": 6,
+      "fail": 0,
+      "info": 0
+    }
+  }
+}
