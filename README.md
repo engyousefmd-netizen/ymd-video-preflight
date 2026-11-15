@@ -72,7 +72,7 @@ The deliberately low 360×640 fixture also triggers the default 720-pixel short-
 
 **Independent editor feedback is welcome.** Please try the tool only on media that you own or are authorized to test. Start with the [8-second synthetic sample](examples/media/synthetic-review.mp4) and its [example report](examples/demo-report/report.html), then follow the [short field-testing checklist](docs/FIELD_TESTING.md). If something is misleading or broken, [open a field-feedback issue](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/new/choose). You can share timestamps, versions and a synthetic reproducer without sharing customer footage.
 
-The current release is **early-stage**. The original validation was synthetic and Linux-based; GitHub Actions now runs Linux tests and work is in progress on Windows/macOS. **No independent usage, downloads, or production reliability are claimed.** Track real [beta-testing feedback](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) and [cross-platform validation](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2).
+The current release is **early-stage**. The original validation used synthetic fixtures on Linux. A later [GitHub Actions run passed on Linux, Windows and macOS](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711109502), although independent real-editor testing remains outstanding. **No independent usage, downloads, or production reliability are claimed.** Track real [beta-testing feedback](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) and [cross-platform validation](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2).
 
 ## Automation and exit codes
 
