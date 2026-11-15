@@ -16,7 +16,10 @@ class SubtitleAuditTests(unittest.TestCase):
 
     def write_srt(self, content, name="ترجمة_الفيديو.srt", encoding="utf-8"):
         path = self.directory / name
-        path.write_text(content, encoding=encoding)
+        # Preserve literal CRLF in fixtures on Windows. Path.write_text()
+        # applies newline translation and can turn CRLF into CRCRLF there.
+        with path.open("w", encoding=encoding, newline="") as stream:
+            stream.write(content)
         return path
 
     @staticmethod

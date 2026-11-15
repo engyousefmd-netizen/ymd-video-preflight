@@ -67,15 +67,15 @@ class MediaIntegrationTests(unittest.TestCase):
         self.assertEqual(next(c["status"] for c in result["checks"] if c["id"] == "audio_present"), "warn")
 
     def test_local_filename_with_spaces_and_shell_metacharacters(self):
-        unusual = self.root / "فيديو <sample> $(do-not-run).mp4"
+        unusual = self.root / "فيديو & sample $(do-not-run).mp4"
         shutil.copyfile(self.demo, unusual)
         result = analyze(unusual, metadata_only=True)
         self.assertEqual(result["source"]["name"], unusual.name)
         target = self.root / "special-report"
         write_reports(result, target, "ar")
         html = (target / "report.html").read_text(encoding="utf-8")
-        self.assertNotIn("<sample>", html)
-        self.assertIn("&lt;sample&gt;", html)
+        self.assertNotIn("& sample", html)
+        self.assertIn("&amp; sample", html)
 
     def test_invalid_file_and_timeout_are_operational_failures(self):
         invalid = self.root / "broken.mp4"

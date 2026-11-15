@@ -6,16 +6,58 @@ permissions:
   contents: read
 jobs:
   unit:
-    runs-on: ubuntu-latest
+    name: Tests (${{ matrix.os }} / Python ${{ matrix.python-version }})
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        python-version: ["3.10", "3.12", "3.13"]
+        include:
+          - os: ubuntu-latest
+            python-version: "3.10"
+          - os: ubuntu-latest
+            python-version: "3.12"
+          - os: ubuntu-latest
+            python-version: "3.13"
+          - os: macos-latest
+            python-version: "3.12"
+          - os: windows-latest
+            python-version: "3.12"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install FFmpeg
+      - name: Install FFmpeg on Linux
+        if: runner.os == 'Linux'
         run: sudo apt-get update && sudo apt-get install -y ffmpeg
-      - name: Run checks
+      - name: Install FFmpeg on macOS
+        if: runner.os == 'macOS'
+        run: brew install ffmpeg
+      - name: Install FFmpeg on Windows
+        if: runner.os == 'Windows'
+        run: choco install ffmpeg -y --no-progress
+      - name: Check FFmpeg
+        run: ffmpeg -version
+      - name: Check ffprobe
+        run: ffprobe -version
+      - name: Run automated tests
         run: python -m unittest discover -s tests -v
+
+  release:
+    name: Publish v0.1.0 source-only prerelease
+    needs: unit
+    if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Publish once after green CI
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if gh release view v0.1.0 >/dev/null 2>&1; then
+            echo "v0.1.0 already exists; skipping duplicate release."
+          else
+            gh release create v0.1.0 --target "$GITHUB_SHA" --title "YMD Video Preflight v0.1.0 (alpha)" --notes-file docs/RELEASE_NOTES_0.1.0.md --prerelease
+          fi

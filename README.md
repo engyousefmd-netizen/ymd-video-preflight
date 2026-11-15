@@ -1,8 +1,10 @@
 # YMD Video Preflight
 
+[![Tests](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/workflows/tests.yml/badge.svg)](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/workflows/tests.yml)
+
 **Local video delivery checks with Arabic and English reports.**
 
-[دليل عربي](README.ar.md) · [How the checks work](docs/CHECKS.md) · [Contributing](CONTRIBUTING.md)
+[دليل عربي](README.ar.md) · [How the checks work](docs/CHECKS.md) · [Beta testing guide](docs/FIELD_TESTING.md) · [Contributing](CONTRIBUTING.md)
 
 An early-stage, MIT-licensed command-line tool for small video-editing teams. It turns FFmpeg measurements and SRT checks into a timestamped review report, without uploading footage or changing the source file.
 
@@ -66,6 +68,12 @@ python3 -m ymd_preflight examples/new-media/synthetic-review.mp4 --profile verti
 
 The deliberately low 360×640 fixture also triggers the default 720-pixel short-edge preference. An alert in this demonstration is expected; it is not a claim about any client's work.
 
+## Help validate it with real-world edits
+
+**Independent editor feedback is welcome.** Please try the tool only on media that you own or are authorized to test. Start with the [8-second synthetic sample](examples/media/synthetic-review.mp4) and its [example report](examples/demo-report/report.html), then follow the [short field-testing checklist](docs/FIELD_TESTING.md). If something is misleading or broken, [open a field-feedback issue](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/new/choose). You can share timestamps, versions and a synthetic reproducer without sharing customer footage.
+
+The current release is **early-stage**. The original validation used synthetic fixtures on Linux. A later [GitHub Actions run passed on Linux, Windows and macOS](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711109502), although independent real-editor testing remains outstanding. **No independent usage, downloads, or production reliability are claimed.** Track real [beta-testing feedback](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) and [cross-platform validation](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2).
+
 ## Automation and exit codes
 
 | Exit | Meaning |
@@ -86,7 +94,7 @@ Reports are not overwritten unless `--overwrite` is supplied. Source media, subt
 python3 -m unittest discover -s tests -v
 ```
 
-The suite includes real FFmpeg-generated fixtures plus parser, subtitle and report checks. Integration tests skip when FFmpeg is unavailable. See [the validation record](docs/VALIDATION.md) for what was actually run on this release; a workflow file is not evidence that GitHub Actions has run.
+The suite includes real FFmpeg-generated fixtures plus parser, subtitle and report checks. Integration tests skip when FFmpeg is unavailable. See [the validation record](docs/VALIDATION.md) for what was actually run on this release; the initial Linux GitHub Actions run is documented with an actual link; other platforms must be evaluated separately.
 
 ## Scope and project status
 
