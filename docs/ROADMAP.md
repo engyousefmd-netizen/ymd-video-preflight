@@ -1,6 +1,11 @@
 # Development roadmap
 
-These are proposed next steps, not completed features or promised release dates.
+These are proposed next steps, not completed features or promised release dates. We record unresolved work in public issues rather than suggesting that planned features or real user testing have already happened.
+
+**Active evidence gaps**
+
+- [#1 — Obtain consent-based feedback from independent editors](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1). Three independent reproducible reports would be a useful initial goal, not a result achieved so far.
+- [#2 — Windows/macOS compatibility checks](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2). CI configuration is proposed; verify real run status before claiming success.
 
 1. Run the tool on real, authorized Studio YMD deliveries and record false positives and missed issues without exposing client files.
 2. Invite a small number of consenting editors to try it; collect reproducible feedback instead of collecting artificial stars or downloads.

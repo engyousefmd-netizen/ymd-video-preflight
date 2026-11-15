@@ -20,4 +20,4 @@ The initial implementation has AI-assisted contributions. Reviewers should inspe
 
 A maintainer should reproduce reported issues, review changes, update the changelog, rerun relevant checks, and tag a release only after the intended behavior is verified. A proposed workflow file is not evidence of a completed CI run. No guaranteed response time is offered by this new project.
 
-Before a public repository is created, use this package locally; there is no public issue tracker in this release archive. After publication, use that repository's Issues and Pull Requests.
+This repository is public. File reproducible bugs and suggestions through [Issues](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/new/choose), or submit a Pull Request with a test. For feedback on real editing exports, follow [FIELD_TESTING.md](docs/FIELD_TESTING.md). Do not post identifying customer data or unpublished footage. The open [beta validation issue](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) tracks authentic external feedback; synthetic tests are not evidence of adoption.

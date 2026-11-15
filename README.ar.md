@@ -37,6 +37,12 @@ python3 -m ymd_preflight "video.mp4" --srt "captions.srt" --output reports/with-
 
 افتح `examples/demo-report/report.html` لمشاهدة تقرير جاهز بدون تثبيت الأداة. التقرير مأخوذ من اختبار مصطنع مدته 8 ثوانٍ، فيه أخطاء مقصودة للتأكد من أن الفحوص تكتشفها.
 
+## شارك في تجربة الأداة على فيديوهات حقيقية
+
+يسعدنا استقبال تجارب **مونتيرين مستقلين** للأداة، لكن فقط على فيديوهات تملكها أو لديك تصريح باستخدامها. ابدأ بـ[الفيديو التجريبي المولّد](examples/media/synthetic-review.mp4) و[التقرير التجريبي](examples/demo-report/report.html)، ثم اتبع [دليل التجربة القصير](docs/FIELD_TESTING.md). لو ظهر تحذير غير صحيح أو مشكلة في التشغيل، [افتح بلاغًا في GitHub](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/new/choose) واكتب نوع الفيديو والتوقيتات والإصدار، من غير رفع أي فيديو لعميل أو بيانات خاصة.
+
+**حالة المشروع:** ما زال في البداية، ولا ندّعي وجود مستخدمين مستقلين أو موثوقية مثبتة على فيديوهات عملاء. [متابعة تجارب المستخدمين](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) · [متابعة اختبارات Windows وmacOS](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2).
+
 ## الإعدادات
 
 | الاختيار | الغرض |

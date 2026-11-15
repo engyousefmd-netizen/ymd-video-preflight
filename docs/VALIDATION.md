@@ -17,7 +17,7 @@ Checked on 2026-11-14T08:41:24.031190+00:00.
 ## Limits
 
 - No independent users or client deliveries were involved in validation.
-- macOS and Windows execution has not been tested in this environment.
-- GitHub Actions has not run. The included workflow is prepared configuration only.
+- As of the first 0.1.0 validation, macOS and Windows execution had **not yet been tested**. Follow issue [#2](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2) and linked workflow results for later cross-platform evidence.
+- The first **published GitHub Actions run completed successfully** on 2026-11-14: [run #1](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43583356067), including Ubuntu runners with Python 3.10, 3.12 and 3.13. This evidence supersedes the original pre-publication note. macOS/Windows results must be checked separately; see [#2](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2).
 - Browser-rendered visual QA was unavailable because the local browser process could not open its required socket. The report has structural checks, not a completed visual-browser review.
 - Measurements and threshold checks do not replace human review; see CHECKS.md.
