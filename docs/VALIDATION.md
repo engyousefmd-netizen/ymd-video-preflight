@@ -1,29 +1,29 @@
-# Validation record — 0.1.0
+# Validation record — 0.1.0 alpha
 
-Checked on 2026-11-14T08:41:24.031190+00:00.
+This document separates verified automated checks from real-world acceptance. It records observations, not claims of production certification.
 
-## Executed
+## Initial local validation — 2026-11-14
 
-- `python3 -m unittest discover -s tests -v`: **49 tests passed**, including eight integration tests with real FFmpeg-generated media.
-- Runtime: Python 3.12.14 on Linux; FFmpeg/ffprobe 7.1.5.
-- Synthetic eight-second input: a black interval from 2.0–3.2 s, silence near 2.005–3.221 s, and static intervals from 2.0–3.2 and 3.2–5.2 s were detected.
-- The optional SRT fixture produced five review findings, including an overlap and a cue extending beyond the clip.
-- SHA-256 checks verified the fixture remained unchanged. Arabic filenames and shell metacharacters were handled as data.
-- A concurrent-output regression was reproduced and corrected: without `--overwrite`, a report created by another run is preserved.
-- HTML/Markdown escaping, RTL structure, null/missing-field handling and standalone resources were checked programmatically.
+- `python3 -m unittest discover -s tests -v`: **49 tests passed**, including eight integration tests using **synthetically generated** FFmpeg media.
+- Environment: Python 3.12.14 on Linux; FFmpeg/ffprobe 7.1.5.
+- The eight-second synthetic fixture produced black, silence and static-frame review cues around the intentionally inserted intervals. The accompanying SRT fixture produced five findings, including overlap and an out-of-bounds cue.
+- Tests checked source SHA-256 preservation, Arabic/shell-special filenames, escaped HTML/Markdown output, a concurrent report-output regression, and isolated package installation.
 
-- An isolated package build/install completed successfully; the installed CLI returned version `0.1.0`. No global Python environment was modified.
+## GitHub Actions evidence — 2026-11-14 and 2026-11-15
 
-## Subsequent cross-platform verification — 2026-11-15
+| Observation | Evidence | Interpretation |
+| --- | --- | --- |
+| Initial Linux CI passed (Python 3.10, 3.12, 3.13) | [2026-11-14 run](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43583356067) | Initial published build was testable on Ubuntu |
+| Initial Windows CI exposed a test fixture newline problem | [Failure](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711000340), [fix](https://github.com/engyousefmd-netizen/ymd-video-preflight/commit/81b800dc9a0f5c08e70a91f85734ea0380692650) | The test writer unintentionally transformed CRLF into CRCRLF on Windows; fixture corrected |
+| Linux / Windows / macOS matrix passed | [Cross-platform run](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711109502) | Five test jobs passed: Ubuntu/Python 3.10, 3.12, 3.13; macOS/Python 3.12; Windows/Python 3.12 |
+| The same matrix passed on `main`, followed by successful source-only prerelease job | [Main branch run](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711555916), [v0.1.0 prerelease](https://github.com/engyousefmd-netizen/ymd-video-preflight/releases/tag/v0.1.0) | Successful verification at the latest documented release |
 
-- On [GitHub Actions run 43711109502](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711109502), **all five test jobs completed successfully**: Ubuntu/Python 3.10, 3.12 and 3.13; macOS/Python 3.12; Windows/Python 3.12.
-- The first Windows CI run exposed a **test-fixture newline-transformation defect**, not a verified product defect: `Path.write_text` transformed explicit CRLF in an SRT test into CRCRLF on Windows. The test helper now writes the fixture with `newline=""` to preserve literal bytes. A later Windows run passed the full suite, including this regression test. See [fix commit 81b800d](https://github.com/engyousefmd-netizen/ymd-video-preflight/commit/81b800dc9a0f5c08e70a91f85734ea0380692650).
-- These are tests against synthetic fixtures and known conditions. **No independent editor trials, verified downloads or production-safety claims** follow from this result.
+## What these results do **not** show
 
-## Limits
+- **No verified independent editor trials, users, downloads or client deliveries** are established by the test suite. [Issue #1](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) seeks opt-in field reports.
+- GitHub-hosted runner success is not proof that arbitrary real exports or all FFmpeg distributions work.
+- The generated synthetic media tests known scenarios; the false-positive and false-negative rates on real material remain unmeasured.
+- Browser-rendered visual QA of the HTML report was not completed in the initial validation; structural output tests did pass.
+- Only the primary selected audio/video streams are scanned, and the tool does not certify a delivery or replace editorial judgment.
 
-- No independent users or client deliveries were involved in validation.
-- GitHub Actions later successfully ran the complete suite on **macOS and Windows** (Python 3.12), as well as Linux (Python 3.10, 3.12, 3.13). See the time-stamped verification below. These runner tests do not replace hands-on validation on editors' actual machines or video exports.
-- The first **published GitHub Actions run completed successfully** on 2026-11-14: [run #1](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43583356067), including Ubuntu runners with Python 3.10, 3.12 and 3.13. This evidence supersedes the original pre-publication note. macOS/Windows results must be checked separately; see [#2](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2).
-- Browser-rendered visual QA was unavailable because the local browser process could not open its required socket. The report has structural checks, not a completed visual-browser review.
-- Measurements and threshold checks do not replace human review; see CHECKS.md.
+See [field-testing instructions](FIELD_TESTING.md) and [maintenance evidence](ADOPTION_EVIDENCE.md).

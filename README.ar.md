@@ -41,7 +41,7 @@ python3 -m ymd_preflight "video.mp4" --srt "captions.srt" --output reports/with-
 
 يسعدنا استقبال تجارب **مونتيرين مستقلين** للأداة، لكن فقط على فيديوهات تملكها أو لديك تصريح باستخدامها. ابدأ بـ[الفيديو التجريبي المولّد](examples/media/synthetic-review.mp4) و[التقرير التجريبي](examples/demo-report/report.html)، ثم اتبع [دليل التجربة القصير](docs/FIELD_TESTING.md). لو ظهر تحذير غير صحيح أو مشكلة في التشغيل، [افتح بلاغًا في GitHub](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/new/choose) واكتب نوع الفيديو والتوقيتات والإصدار، من غير رفع أي فيديو لعميل أو بيانات خاصة.
 
-**حالة المشروع:** ما زال في البداية. [اختبارات GitHub نجحت على Linux وWindows وmacOS](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711109502)، لكننا لا ندّعي وجود مستخدمين مستقلين أو موثوقية مثبتة على فيديوهات عملاء. [متابعة تجارب المستخدمين](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) · [متابعة اختبارات Windows وmacOS](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2).
+**حالة المشروع:** ما زال في البداية. [اختبارات GitHub نجحت على Linux وWindows وmacOS](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711109502)، لكننا لا ندّعي وجود مستخدمين مستقلين أو موثوقية مثبتة على فيديوهات عملاء. [متابعة تجارب المستخدمين الفعلية — لم تُحسم بعد](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) · [اختبارات Windows وmacOS — مكتملة](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2) · [سجل أدلة الاختبارات والاستخدام](docs/ADOPTION_EVIDENCE.md).
 
 ## الإعدادات
 
@@ -57,6 +57,9 @@ python3 -m ymd_preflight "video.mp4" --srt "captions.srt" --output reports/with-
 يمكن تعديل `examples/custom-profile.json` واستخدامه مع `--profile-json`. استخدم مجلد نتيجة جديدًا في كل مرة، أو `--overwrite` لاستبدال التقارير القديمة فقط. لملف طويل يمكنك زيادة `--timeout` من 300 ثانية.
 
 ## للمساهمين
+
+لو محتاج قائمة محدثة بملفات المشروع مع بصمة SHA-256 لكل ملف، نفّذ `python3 scripts/source_manifest.py --output MANIFEST.json`. الملف الناتج محلي وغير محفوظ تلقائيًا في Git، حتى لا تصبح بياناته قديمة بعد أي تحديث.
+
 
 راجع [دليل المساهمة](CONTRIBUTING.md) و[خطة التطوير](docs/ROADMAP.md). نحتاج تجارب فعلية على أنواع فيديو مختلفة وتقارير مشكلات يمكن إعادة إنتاجها. لا ترفع ملفات عملاء أو تفاصيل خاصة إلى مشروع عام؛ استخدم عينة مصطنعة أو عينة لديك حق نشرها.
 

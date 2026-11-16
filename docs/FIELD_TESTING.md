@@ -2,7 +2,7 @@
 
 [العربية](#دليل-تجربة-الأداة-بالعربي)
 
-**Status:** Early public beta. As of initial publication, we have synthetic validation and no verified independent adoption. This guide invites genuine testing; it does not document completed field studies.
+**Status:** Public alpha, open to opt-in field testing. The published verification uses synthetic fixtures; **no independent adoption or field accuracy is verified**. This guide invites genuine tests and is not a completed field study.
 
 ## Privacy comes first
 
@@ -31,6 +31,9 @@ py -m ymd_preflight "examples/media/synthetic-review.mp4" --profile vertical-soc
 
 ## How to report useful findings
 
+Please share observations only if you choose to participate. **A critical or negative result is just as useful as a positive one**; do not leave stars, testimonials, or public praise as a condition of testing. A single honest report is more useful than fabricated adoption. The maintainer should independently reproduce and triage reported defects.
+
+
 Open a [field-feedback issue](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/new/choose) and include:
 
 - Operating system, Python version, FFmpeg version
@@ -42,13 +45,13 @@ Open a [field-feedback issue](https://github.com/engyousefmd-netizen/ymd-video-p
 
 Do not claim a report is representative of all video formats. The current version does not score visual quality, transcribe dialogue, establish lip-sync or certify a platform delivery spec.
 
-Project tracking: [independent beta-testing issue #1](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1).
+Project tracking: [independent field-testing issue #1](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) and [public evidence register](ADOPTION_EVIDENCE.md).
 
 ---
 
 ## دليل تجربة الأداة بالعربي
 
-**حالة المشروع:** نسخة تجريبية أولى. اختباراتنا الأولى كانت بملفات مولّدة، ولم نوثّق بعد استخدامًا من مونتيرين مستقلين.
+**حالة المشروع:** نسخة Alpha تجريبية، مفتوحة لتجارب اختيارية. اختباراتنا الأولى كانت بملفات مولّدة، ولم نوثّق بعد استخدامًا من مونتيرين مستقلين. الملاحظات السلبية مهمة بقدر الملاحظات الإيجابية، ولا يُطلب من المجربين تقييم نجوم أو إشادة.
 
 1. استخدم فيديو تملكه أو مسموح لك باختباره فقط. ممنوع رفع فيديوهات العملاء أو أي بيانات حساسة على GitHub.
 2. نزّل المشروع وفك الضغط. ثبّت Python وFFmpeg/ffprobe. في Windows استخدم أمر `py`، وفي macOS/Linux استخدم `python3`.

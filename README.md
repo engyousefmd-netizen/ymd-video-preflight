@@ -72,7 +72,7 @@ The deliberately low 360×640 fixture also triggers the default 720-pixel short-
 
 **Independent editor feedback is welcome.** Please try the tool only on media that you own or are authorized to test. Start with the [8-second synthetic sample](examples/media/synthetic-review.mp4) and its [example report](examples/demo-report/report.html), then follow the [short field-testing checklist](docs/FIELD_TESTING.md). If something is misleading or broken, [open a field-feedback issue](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/new/choose). You can share timestamps, versions and a synthetic reproducer without sharing customer footage.
 
-The current release is **early-stage**. The original validation used synthetic fixtures on Linux. A later [GitHub Actions run passed on Linux, Windows and macOS](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711109502), although independent real-editor testing remains outstanding. **No independent usage, downloads, or production reliability are claimed.** Track real [beta-testing feedback](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1) and [cross-platform validation](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2).
+The current release is **early-stage**. The original validation used synthetic fixtures on Linux. A later [GitHub Actions run passed on Linux, Windows and macOS](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711109502), although independent real-editor testing remains outstanding. **No independent usage, downloads, or production reliability are claimed.** Track [independent field feedback (open)](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/1). [Cross-platform testing (#2) is completed](https://github.com/engyousefmd-netizen/ymd-video-preflight/issues/2); the passing workflow is linked above. See the [verification and adoption evidence record](docs/ADOPTION_EVIDENCE.md) for the distinction between tests and external use.
 
 ## Automation and exit codes
 
@@ -94,7 +94,9 @@ Reports are not overwritten unless `--overwrite` is supplied. Source media, subt
 python3 -m unittest discover -s tests -v
 ```
 
-The suite includes real FFmpeg-generated fixtures plus parser, subtitle and report checks. Integration tests skip when FFmpeg is unavailable. See [the validation record](docs/VALIDATION.md) for what was actually run on this release; the initial Linux GitHub Actions run is documented with an actual link; other platforms must be evaluated separately.
+The suite includes real FFmpeg-generated synthetic fixtures plus parser, subtitle and report checks. Integration tests skip when FFmpeg is unavailable. [GitHub Actions run 43711555916](https://github.com/engyousefmd-netizen/ymd-video-preflight/actions/runs/43711555916) passed its test jobs on Ubuntu (Python 3.10/3.12/3.13), macOS (Python 3.12) and Windows (Python 3.12). See the [validation record](docs/VALIDATION.md). These checks are **not** evidence of independent users or production reliability.
+
+To generate a **current** SHA-256 inventory of tracked source files, run `python3 scripts/source_manifest.py --output MANIFEST.json`. The generated file is intentionally ignored by Git rather than maintained as a stale, manually committed snapshot.
 
 ## Scope and project status
 
