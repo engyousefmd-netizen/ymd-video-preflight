@@ -42,6 +42,11 @@ jobs:
         run: ffprobe -version
       - name: Run automated tests
         run: python -m unittest discover -s tests -v
+      - name: Generate and verify current source manifest
+        if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
+        run: |
+          python scripts/source_manifest.py --output MANIFEST.json
+          python scripts/source_manifest.py --check --output MANIFEST.json
 
   release:
     name: Publish v0.1.0 source-only prerelease

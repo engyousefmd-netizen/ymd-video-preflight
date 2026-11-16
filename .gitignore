@@ -7,3 +7,4 @@ dist/
 reports/
 .test-media/
 .DS_Store
+MANIFEST.json
